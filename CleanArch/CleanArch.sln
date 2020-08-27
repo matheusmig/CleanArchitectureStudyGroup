@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30320.27
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanArch", "CleanArch\CleanArch.csproj", "{EBC799C7-E006-4A7C-9B33-1491ECF0DF1F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanArch", "CleanArch\CleanArch.csproj", "{EBC799C7-E006-4A7C-9B33-1491ECF0DF1F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{CC30AB32-B93E-4E08-8EC9-9C1C87CD65B5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{C3B70010-FC0A-4720-BF4D-8F220BCEEA38}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,9 +19,16 @@ Global
 		{EBC799C7-E006-4A7C-9B33-1491ECF0DF1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EBC799C7-E006-4A7C-9B33-1491ECF0DF1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EBC799C7-E006-4A7C-9B33-1491ECF0DF1F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3B70010-FC0A-4720-BF4D-8F220BCEEA38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3B70010-FC0A-4720-BF4D-8F220BCEEA38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3B70010-FC0A-4720-BF4D-8F220BCEEA38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3B70010-FC0A-4720-BF4D-8F220BCEEA38}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C3B70010-FC0A-4720-BF4D-8F220BCEEA38} = {CC30AB32-B93E-4E08-8EC9-9C1C87CD65B5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CB9F6944-219D-4C18-A15B-0FE76F038BDB}

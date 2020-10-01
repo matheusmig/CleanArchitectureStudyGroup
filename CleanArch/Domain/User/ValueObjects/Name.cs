@@ -1,20 +1,14 @@
-﻿using Domain.User.Exceptions;
+﻿using System;
 using System.Linq;
 
 namespace Domain.User.ValueObjects
 {
-    public readonly struct Name
+    public readonly struct Name: IEquatable<Name>
     {
         public Name(string fullname)
         {
-            if (!(fullname?.Length > 0))
-                throw new NameLengthException(fullname ?? "null");
-
-            if (!fullname.Contains(' '))
-                throw new NameBadFormatException(fullname);
-            
             var splittedName = fullname.Split(' ');
-            Filename = splittedName[0];
+            Firstname = splittedName[0];
             Lastname = splittedName[^1];
 
             if (splittedName.Length > 2)
@@ -25,23 +19,28 @@ namespace Domain.User.ValueObjects
 
         public Name(string firstname, string lastname, string middlename = null)
         {
-            if (firstname?.Length < 0)
-                throw new NameLengthException(firstname ?? "null");
-
-            if (lastname?.Length < 0)
-                throw new NameLengthException(lastname ?? "null");
-
-            Filename = firstname;
+            Firstname = firstname;
             Lastname = lastname;
-
-            if (middlename == null)
-                Middlename = string.Empty;
-            else
-                Middlename = middlename;
+            Middlename = middlename ?? string.Empty;
         }
 
-        public string Filename { get; }
+        public string Firstname { get; }
         public string Lastname { get; }
         public string Middlename { get; }
+
+        public bool Equals(Name other) => 
+            Firstname == other.Firstname 
+            && Lastname == other.Lastname
+            && Middlename == other.Middlename;
+        public override bool Equals(object obj) => obj is Name other && Equals(other);
+        public override int GetHashCode() => HashCode.Combine(Firstname, Lastname, Middlename);
+        public static bool operator ==(Name left, Name right) => left.Equals(right);
+        public static bool operator !=(Name left, Name right) => !(left == right);
+        public override string ToString()
+        {
+            if (string.IsNullOrWhiteSpace(Middlename))
+                return $"{Firstname} {Lastname}";
+            return $"{Firstname} {Middlename} {Lastname}";
+        }
     }
 }

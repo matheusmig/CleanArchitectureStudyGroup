@@ -6,7 +6,7 @@ using Application.Services;
 
 namespace Application.UseCases.RegisterUser
 {
-    class RegisterUserValidationUseCase : IRegisterUserUseCase
+    public sealed class RegisterUserValidationUseCase : IRegisterUserUseCase
     {
         private readonly IRegisterUserUseCase _useCase;
         private IOutputPort? _outputPort;

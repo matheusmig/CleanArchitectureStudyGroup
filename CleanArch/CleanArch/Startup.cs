@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using WebApi.Modules;
 using WebApi.Modules.Common;
 using WebApi.Modules.Common.Swagger;
 
@@ -35,12 +36,12 @@ namespace CleanArch
                    //.AddHealthChecks(this.Configuration)
                    //.AddAuthentication(Configuration)
                    .AddVersioning()
-                   .AddSwagger();
-                   //.AddUseCases()
-                   //.AddCustomControllers()
-                   //.AddCustomCors()
-                   //.AddProxy()
-                   //.AddCustomDataProtection();
+                   .AddSwagger()
+                   .AddUseCases();
+                    //.AddCustomControllers()
+                    //.AddCustomCors()
+                    //.AddProxy()
+                    //.AddCustomDataProtection();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

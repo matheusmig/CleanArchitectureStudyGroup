@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Text;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
@@ -17,7 +15,7 @@ namespace Infrastructure.DataAccess
 
             DbContextOptionsBuilder<CleanArchContext> builder = new DbContextOptionsBuilder<CleanArchContext>();
             Console.WriteLine(connectionString);
-            builder.UseSqlite(connectionString);
+            builder.UseMySql(connectionString);
             builder.EnableSensitiveDataLogging();
             return new CleanArchContext(builder.Options);
         }

@@ -26,9 +26,9 @@ namespace Application.UseCases.RegisterUser
                 modelState.Add(nameof(name), "Name has a bad format");
      
             var now = DateTime.UtcNow;
-            if (birthdate < now.AddYears(18))
+            if (birthdate > now.AddYears(-18))
                 modelState.Add(nameof(birthdate), "Minor is not allowed");
-            if (birthdate > now.AddYears(150))
+            if (birthdate < now.AddYears(-150))
                modelState.Add(nameof(birthdate), "Immortals not allowed");
 
             if (modelState.IsValid)

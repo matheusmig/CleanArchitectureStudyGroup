@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using Domain.User;
 using Domain.User.ValueObjects;
 using Microsoft.EntityFrameworkCore;
@@ -28,8 +26,7 @@ namespace Infrastructure.DataAccess.Configuration
             builder.Property(user => user.Birthdate)
                 .HasConversion(
                     valueObject => valueObject.DateTime,
-                    valueDate => new Birthdate(valueDate))
-                .IsRequired();
+                    valueDate => new Birthdate(valueDate));
         }
     }
 }

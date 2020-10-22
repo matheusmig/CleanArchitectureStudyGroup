@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using Domain.User;
 using Microsoft.EntityFrameworkCore;
 
@@ -22,7 +20,7 @@ namespace Infrastructure.DataAccess
             }
 
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(CleanArchContext).Assembly);
-            //SeedData.Seed(modelBuilder);
+            SeedData.Seed(modelBuilder);
         }
     }
 }

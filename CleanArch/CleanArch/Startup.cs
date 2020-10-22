@@ -28,11 +28,13 @@ namespace CleanArch
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services
+            services.AddMvc();
+
+            services                    
                    //.AddFeatureFlags(this.Configuration) // should be the first one.
                    //.AddInvalidRequestLogging()
                    //.AddCurrencyExchange(this.Configuration)
-                   //.AddSQLServer(this.Configuration)
+                   .AddMySql(Configuration)
                    //.AddHealthChecks(this.Configuration)
                    //.AddAuthentication(Configuration)
                    .AddVersioning()
@@ -55,8 +57,8 @@ namespace CleanArch
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseVersionedSwagger(provider, Configuration, env)
-               .UseRouting()
+            app.UseRouting()
+               .UseVersionedSwagger(provider, Configuration, env)
                .UseEndpoints(endpoints =>
                 {
                     endpoints.MapControllers();

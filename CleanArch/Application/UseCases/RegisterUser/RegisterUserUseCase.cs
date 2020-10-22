@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
+using Application.Services;
 using Domain.User;
 using Domain.User.ValueObjects;
 
@@ -9,12 +8,17 @@ namespace Application.UseCases.RegisterUser
 {
     public sealed class RegisterUserUseCase : IRegisterUserUseCase
     {
+        private readonly IUnitOfWork _unitOfWork;
         private readonly IUserRepository _userRepository;
         private readonly IUserFactory _userFactory;
         private IOutputPort? _outputPort;
 
-        public RegisterUserUseCase(IUserRepository userRepository, IUserFactory userFactory)
+        public RegisterUserUseCase(
+            IUnitOfWork unitOfWork,
+            IUserRepository userRepository, 
+            IUserFactory userFactory)
         {
+            _unitOfWork = unitOfWork;
             _userRepository = userRepository;
             _userFactory = userFactory;
         }
@@ -26,6 +30,8 @@ namespace Application.UseCases.RegisterUser
         {
             var user = _userFactory.NewUser(name, birthdate);
             await _userRepository.AddAsync(user);
+
+            await _unitOfWork.Save();
 
             _outputPort?.Ok(user);
         }
